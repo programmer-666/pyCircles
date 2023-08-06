@@ -12,8 +12,8 @@ shapes: list = [] # holds circles
 window: pyglet.window.cocoa.CocoaWindow = pyglet.window.Window(width=WIDTH, height=HEIGHT, caption="Circles", vsync=False, style=pyglet.window.Window.WINDOW_STYLE_DEFAULT)
 # CocoaWindow type for mac
 
-radius: int = 100
-def draw_circle(x: int, y: int):
+radius: float = 100.0
+def draw_circle(x: int, y: int) -> None:
     global radius
     if radius > 0:
         circle = pyglet.shapes.Circle(x=x, y=y, radius=radius, color=(random.randint(0, 256), random.randint(0, 256), random.randint(0, 256)))
@@ -25,7 +25,7 @@ def draw_circle(x: int, y: int):
 # changes windows width and height
 click_flag: bool = True
 @window.event
-def on_mouse_press(x, y, button, modifiers):
+def on_mouse_press(x, y, button, modifiers) -> None:
     global click_flag
     if click_flag:
         window.set_size(WIDTH / 2, HEIGHT / 2)
@@ -35,10 +35,10 @@ def on_mouse_press(x, y, button, modifiers):
         click_flag = True
 
 @window.event
-def on_draw():
+def on_draw() -> None:
     window.clear()
-    x: int = random.randint(0, WIDTH)
-    y: int = random.randint(0, HEIGHT)
+    x = random.randint(0, WIDTH)
+    y = random.randint(0, HEIGHT)
 
     draw_circle(x, y)
     for shape in shapes:
