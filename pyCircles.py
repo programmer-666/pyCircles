@@ -9,18 +9,29 @@ import random
 WIDTH, HEIGHT = 800, 600 # for frame
 shapes: list = [] # holds circles
 
-window: pyglet.window.cocoa.CocoaWindow = pyglet.window.Window(width=WIDTH, height=HEIGHT, caption="Circles", vsync=False, style=pyglet.window.Window.WINDOW_STYLE_DEFAULT)
+window: pyglet.window.cocoa.CocoaWindow = pyglet.window.Window(
+    width=WIDTH,
+    height=HEIGHT,
+    caption="Circles",
+    vsync=False,
+    style=pyglet.window.Window.WINDOW_STYLE_DEFAULT)
 # CocoaWindow type for mac
 
 radius: float = 100.0
 def draw_circle(x: int, y: int) -> None:
     global radius
     if radius > 0:
-        circle = pyglet.shapes.Circle(x=x, y=y, radius=radius, color=(random.randint(0, 256), random.randint(0, 256), random.randint(0, 256)))
+        circle = pyglet.shapes.Circle(x=x,
+        y=y,
+        radius=radius,
+        color=(random.randint(0, 256),
+        random.randint(0, 256),
+        random.randint(0, 256)))
+
         shapes.append(circle)
-        radius-=.6
+        radius -= .6
     else:
-        radius+=(10 + random.random() * 10)
+        radius += (10 + random.random() * 10)
 
 # changes windows width and height
 click_flag: bool = True
